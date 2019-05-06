@@ -6,5 +6,8 @@ RUN chmod 744 k3s
 RUN mv k3s /usr/local/bin/k3s
 RUN ln -s /usr/local/bin/k3s /usr/local/bin/kubectl
 COPY snmpd.conf /etc/snmp/snmpd.conf
+VOLUME /var/lib/rancher/k3s 
+VOLUME /var/lib/cni
+VOLUME /var/log
 
-ENTRYPOINT ["/usr/local/bin/k3s", "server", "--docker"]
+ENTRYPOINT ["/usr/local/bin/k3s", "server"]
